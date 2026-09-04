@@ -4,6 +4,8 @@
 
 **开箱即用的 FastAPI 项目模板** — 集成日志、数据库、JWT 鉴权、Docker、CI/CD，复制即可开发后台服务。
 
+![API 文档截图](docs-screenshot.png)
+
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

@@ -4,6 +4,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html
+from fastapi.responses import HTMLResponse
 
 from app.config import settings
 from app.utils.logger import logger
@@ -36,8 +38,8 @@ def create_app() -> FastAPI:
         description="开箱即用的 FastAPI 项目模板，集成日志、数据库、JWT 鉴权、Docker、CI/CD",
         version="1.0.0",
         lifespan=lifespan,
-        docs_url="/docs",
-        redoc_url="/redoc",
+        docs_url=None,
+        redoc_url=None,
         openapi_url="/openapi.json",
     )
 
@@ -56,6 +58,24 @@ def create_app() -> FastAPI:
     # 注册路由
     app.include_router(auth.router, prefix="/api/v1")
     app.include_router(user.router, prefix="/api/v1")
+
+    # 自定义文档页面（使用国内 CDN，避免 jsdelivr 加载问题）
+    @app.get("/docs", include_in_schema=False)
+    async def custom_swagger_ui_html() -> HTMLResponse:
+        return get_swagger_ui_html(
+            openapi_url=app.openapi_url,
+            title=app.title + " - Swagger UI",
+            swagger_js_url="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js",
+            swagger_css_url="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css",
+        )
+
+    @app.get("/redoc", include_in_schema=False)
+    async def redoc_html() -> HTMLResponse:
+        return get_redoc_html(
+            openapi_url=app.openapi_url,
+            title=app.title + " - ReDoc",
+            redoc_js_url="https://unpkg.com/redoc@next/bundles/redoc.standalone.js",
+        )
 
     # 健康检查
     @app.get("/health", tags=["系统"], summary="健康检查")

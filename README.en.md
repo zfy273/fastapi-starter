@@ -4,6 +4,8 @@
 
 **Production-ready FastAPI project template** — Integrated logging, database, JWT auth, Docker, and CI/CD. Start building your backend in minutes.
 
+![API Docs Screenshot](docs-screenshot.png)
+
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
