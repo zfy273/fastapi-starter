@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  # ---------- FastAPI 应用 ----------
+  web:
+    build: .
+    container_name: fastapi-starter-web
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - DATABASE_URL=mysql+pymysql://root:${MYSQL_ROOT_PASSWORD:-rootpassword}@db:3306/fastapi_starter?charset=utf8mb4
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-change-me-in-production-please-use-a-long-random-string}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - app-network
+
+  # ---------- MySQL 数据库 ----------
+  db:
+    image: mysql:8.0
+    container_name: fastapi-starter-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-rootpassword}
+      - MYSQL_DATABASE=fastapi_starter
+      - MYSQL_USER=${MYSQL_USER:-appuser}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-apppassword}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # ---------- 可选：PostgreSQL（取消注释使用） ----------
+  # db:
+  #   image: postgres:16-alpine
+  #   container_name: fastapi-starter-db
+  #   environment:
+  #     - POSTGRES_USER=${POSTGRES_USER:-postgres}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+  #     - POSTGRES_DB=fastapi_starter
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   restart: unless-stopped
+  #   networks:
+  #     - app-network
+
+volumes:
+  mysql_data:
+  # pg_data:
+
+networks:
+  app-network:
+    driver: bridge
