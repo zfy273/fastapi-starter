@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 FastAPI Starter
+# FastAPI Starter
 
 **开箱即用的 FastAPI 项目模板** — 集成日志、数据库、JWT 鉴权、Docker、CI/CD，复制即可开发后台服务。
 
@@ -15,21 +15,21 @@
 
 ---
 
-## ✨ 特性
+## 特性
 
-- ⚡ **FastAPI** — 高性能异步 Web 框架，自动生成交互式 API 文档
-- 🔐 **JWT 鉴权** — 内置注册、登录、令牌刷新、权限分级（普通用户/管理员）
-- 🗄️ **数据库** — SQLAlchemy 2.0 ORM，支持 MySQL / PostgreSQL / SQLite，开箱即用
-- 📝 **统一日志** — 控制台 + 文件双输出，自动滚动，结构化格式
-- ⚠️ **全局异常处理** — 业务异常、参数校验、HTTP 异常统一捕获，返回标准化 JSON
-- 🐳 **Docker** — 多阶段构建，docker-compose 一键启动（含 MySQL）
-- 🔄 **CI/CD** — GitHub Actions 自动代码检查 + 多版本测试 + Docker 构建
-- 🧪 **完整测试** — pytest 集成测试，内存数据库隔离
-- 📁 **清晰架构** — 分层设计（router / service / model / schema），易于扩展
+- **FastAPI** — 高性能异步 Web 框架，自动生成交互式 API 文档
+- **JWT 鉴权** — 内置注册、登录、令牌刷新、权限分级（普通用户/管理员）
+- **数据库** — SQLAlchemy 2.0 ORM，支持 MySQL / PostgreSQL / SQLite，开箱即用
+- **统一日志** — 控制台 + 文件双输出，自动滚动，结构化格式
+- **全局异常处理** — 业务异常、参数校验、HTTP 异常统一捕获，返回标准化 JSON
+- **Docker** — 多阶段构建，docker-compose 一键启动（含 MySQL）
+- **CI/CD** — GitHub Actions 自动代码检查 + 多版本测试 + Docker 构建
+- **完整测试** — pytest 集成测试，内存数据库隔离
+- **清晰架构** — 分层设计（router / service / model / schema），易于扩展
 
 ---
 
-## 🚀 快速开始
+## 快速开始
 
 ### 方式一：本地运行（推荐开发用）
 
@@ -77,7 +77,7 @@ docker-compose logs -f web
 
 ---
 
-## 📡 API 示例
+## API 示例
 
 ### 1. 注册用户
 
@@ -118,7 +118,7 @@ curl -X GET http://localhost:8000/api/v1/users/me \
 
 ---
 
-## 📁 项目结构
+## 项目结构
 
 ```
 fastapi-starter/
@@ -158,7 +158,7 @@ fastapi-starter/
 
 ---
 
-## 🛠️ 常用命令
+## 常用命令
 
 ```bash
 # 运行测试
@@ -184,7 +184,7 @@ docker-compose restart web    # 重启应用
 
 ---
 
-## ⚙️ 环境变量说明
+## 环境变量说明
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
@@ -200,7 +200,7 @@ docker-compose restart web    # 重启应用
 
 ---
 
-## 🤝 贡献
+## 贡献
 
 欢迎提交 Issue 和 Pull Request！
 
@@ -212,7 +212,7 @@ docker-compose restart web    # 重启应用
 
 ---
 
-## 📄 License
+## License
 
 MIT License — 详见 [LICENSE](LICENSE) 文件。
 
@@ -220,6 +220,6 @@ MIT License — 详见 [LICENSE](LICENSE) 文件。
 
 <div align="center">
 
-如果这个项目对你有帮助，欢迎给个 ⭐ Star 支持！
+如果这个项目对你有帮助，欢迎给个 Star 支持！
 
 </div>

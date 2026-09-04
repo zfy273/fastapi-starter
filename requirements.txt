@@ -7,7 +7,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-multipart==0.0.9
 alembic==1.13.2
-psycopg2-binary==2.9.9
+# psycopg2-binary 需要 PostgreSQL 开发库，如需 PostgreSQL 请单独安装
 pymysql==1.1.1
 aiomysql==0.2.0
 httpx==0.27.2

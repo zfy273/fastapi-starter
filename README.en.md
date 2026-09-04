@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 FastAPI Starter
+# FastAPI Starter
 
 **Production-ready FastAPI project template** — Integrated logging, database, JWT auth, Docker, and CI/CD. Start building your backend in minutes.
 
@@ -15,21 +15,21 @@
 
 ---
 
-## ✨ Features
+## Features
 
-- ⚡ **FastAPI** — High-performance async web framework with auto-generated interactive API docs
-- 🔐 **JWT Authentication** — Built-in register, login, token refresh, and role-based access (user/admin)
-- 🗄️ **Database** — SQLAlchemy 2.0 ORM with MySQL / PostgreSQL / SQLite support out of the box
-- 📝 **Unified Logging** — Console + file dual output with auto-rotation and structured formatting
-- ⚠️ **Global Exception Handling** — Business exceptions, validation errors, and HTTP errors all return standardized JSON
-- 🐳 **Docker** — Multi-stage build, docker-compose one-click startup (includes MySQL)
-- 🔄 **CI/CD** — GitHub Actions for automated linting + multi-version testing + Docker build
-- 🧪 **Full Test Suite** — pytest integration tests with isolated in-memory database
-- 📁 **Clean Architecture** — Layered design (router / service / model / schema), easy to extend
+- **FastAPI** — High-performance async web framework with auto-generated interactive API docs
+- **JWT Authentication** — Built-in register, login, token refresh, and role-based access (user/admin)
+- **Database** — SQLAlchemy 2.0 ORM with MySQL / PostgreSQL / SQLite support out of the box
+- **Unified Logging** — Console + file dual output with auto-rotation and structured formatting
+- **Global Exception Handling** — Business exceptions, validation errors, and HTTP errors all return standardized JSON
+- **Docker** — Multi-stage build, docker-compose one-click startup (includes MySQL)
+- **CI/CD** — GitHub Actions for automated linting + multi-version testing + Docker build
+- **Full Test Suite** — pytest integration tests with isolated in-memory database
+- **Clean Architecture** — Layered design (router / service / model / schema), easy to extend
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Local Development
 
@@ -74,7 +74,7 @@ docker-compose logs -f web
 
 ---
 
-## 📡 API Examples
+## API Examples
 
 ### 1. Register a User
 
@@ -115,7 +115,7 @@ curl -X GET http://localhost:8000/api/v1/users/me \
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fastapi-starter/
@@ -155,7 +155,7 @@ fastapi-starter/
 
 ---
 
-## 🛠️ Common Commands
+## Common Commands
 
 ```bash
 # Run tests
@@ -176,7 +176,7 @@ docker-compose restart web    # Restart app
 
 ---
 
-## ⚙️ Environment Variables
+## Environment Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
@@ -192,7 +192,7 @@ docker-compose restart web    # Restart app
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome!
 
@@ -204,7 +204,7 @@ Contributions, issues, and feature requests are welcome!
 
 ---
 
-## 📄 License
+## License
 
 MIT License — see the [LICENSE](LICENSE) file for details.
 
@@ -212,6 +212,6 @@ MIT License — see the [LICENSE](LICENSE) file for details.
 
 <div align="center">
 
-If this project helped you, please give it a ⭐ Star!
+If this project helped you, please give it a Star!
 
 </div>
