@@ -6,10 +6,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.main import app
 from app.database import Base, get_db
-from app.utils.security import hash_password
+from app.main import app
 from app.models.user import User
+from app.utils.security import hash_password
 
 # 使用 SQLite 内存数据库进行测试
 SQLALCHEMY_DATABASE_URL = "sqlite://"
@@ -67,6 +67,7 @@ def get_token(client: TestClient) -> str:
 
 # ---------- 系统接口测试 ----------
 
+
 class TestSystem:
     def test_health_check(self, client):
         response = client.get("/health")
@@ -80,6 +81,7 @@ class TestSystem:
 
 
 # ---------- 认证接口测试 ----------
+
 
 class TestAuth:
     def test_register_success(self, client):
@@ -126,6 +128,7 @@ class TestAuth:
 
 
 # ---------- 用户接口测试 ----------
+
 
 class TestUser:
     def test_get_me(self, client):

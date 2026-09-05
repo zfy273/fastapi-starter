@@ -1,9 +1,8 @@
 """安全工具 - 密码哈希、JWT 令牌生成与验证"""
 
 from datetime import datetime, timedelta, timezone
-from typing import Optional
 
-from jose import JWTError, jwt
+from jose import jwt
 from passlib.context import CryptContext
 
 from app.config import settings
@@ -22,7 +21,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     """生成访问令牌"""
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + (
@@ -41,9 +40,5 @@ def create_refresh_token(data: dict) -> str:
 
 
 def verify_token(token: str) -> dict:
-    """验证并解码令牌"""
-    try:
-        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
-        return payload
-    except JWTError:
-        raise
+    """验证并解码令牌，失败时抛出 JWTError"""
+    return jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])

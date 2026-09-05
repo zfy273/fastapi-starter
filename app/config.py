@@ -1,6 +1,5 @@
 """应用配置管理 - 使用 pydantic-settings 从环境变量加载"""
 
-from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -35,7 +34,7 @@ class Settings(BaseSettings):
     LOG_FILE: str = "logs/app.log"
 
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:5173"]
 
     @property
     def is_production(self) -> bool:

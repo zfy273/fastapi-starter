@@ -1,7 +1,7 @@
 """数据库连接与会话管理"""
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base, Session
+from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
 from app.config import settings
 

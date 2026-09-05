@@ -4,9 +4,9 @@ from sqlalchemy.orm import Session
 
 from app.models.user import User
 from app.schemas.user import UserCreate, UserUpdate
-from app.utils.security import hash_password, verify_password
-from app.utils.exceptions import NotFoundException, ForbiddenException, AppException
+from app.utils.exceptions import AppException, ForbiddenException, NotFoundException
 from app.utils.logger import logger
+from app.utils.security import hash_password, verify_password
 
 
 class AuthService:
@@ -15,9 +15,7 @@ class AuthService:
     @staticmethod
     def authenticate_user(db: Session, username: str, password: str) -> User | None:
         """验证用户凭据"""
-        user = db.query(User).filter(
-            (User.username == username) | (User.email == username)
-        ).first()
+        user = db.query(User).filter((User.username == username) | (User.email == username)).first()
 
         if not user or not verify_password(password, user.hashed_password):
             return None

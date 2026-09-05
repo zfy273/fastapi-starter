@@ -4,13 +4,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html
+from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.responses import HTMLResponse
 
 from app.config import settings
-from app.utils.logger import logger
-from app.utils.exceptions import register_exception_handlers
 from app.routers import auth, user
+from app.utils.exceptions import register_exception_handlers
+from app.utils.logger import logger
 
 
 @asynccontextmanager
@@ -22,6 +22,7 @@ async def lifespan(app: FastAPI):
     # 开发环境自动建表（生产环境建议使用 Alembic 迁移）
     if not settings.is_production:
         from app.database import init_db
+
         init_db()
         logger.info("数据库表初始化完成（开发模式）")
 
@@ -99,6 +100,7 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(
         "app.main:app",
         host=settings.APP_HOST,

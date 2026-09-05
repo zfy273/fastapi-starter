@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.dependencies import get_current_user, get_current_active_admin
+from app.dependencies import get_current_active_admin, get_current_user
 from app.models.user import User
 from app.schemas.user import UserResponse, UserUpdate
 from app.services.auth import UserService
@@ -31,6 +31,7 @@ def update_me(
     update_data.pop("is_active", None)
 
     from app.schemas.user import UserUpdate as UU
+
     filtered = UU(**update_data) if update_data else UU()
     return UserService.update_user(db, current_user.id, filtered)
 
@@ -75,4 +76,3 @@ def delete_user(
 ):
     """管理员删除用户"""
     UserService.delete_user(db, user_id)
-    return None

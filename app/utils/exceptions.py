@@ -1,8 +1,8 @@
 """自定义异常与全局异常处理器"""
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.utils.logger import logger
@@ -85,7 +85,10 @@ def register_exception_handlers(app: FastAPI):
 
     @app.exception_handler(Exception)
     async def generic_exception_handler(request: Request, exc: Exception):
-        logger.error(f"未捕获异常 | path={request.url.path} | {type(exc).__name__}: {exc}", exc_info=True)
+        logger.error(
+            f"未捕获异常 | path={request.url.path} | {type(exc).__name__}: {exc}",
+            exc_info=True,
+        )
         return JSONResponse(
             status_code=500,
             content={

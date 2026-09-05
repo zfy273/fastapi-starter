@@ -28,3 +28,15 @@ include = ["app*"]
 testpaths = ["tests"]
 asyncio_mode = "auto"
 python_files = ["test_*.py"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+# B008: FastAPI 依赖注入标准用法（Depends 在参数默认值中调用）
+ignore = ["B008"]
+
+[tool.black]
+target-version = ["py310"]
+line-length = 100
